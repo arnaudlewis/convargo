@@ -1,21 +1,21 @@
 'use strict'
 
-import React from 'react';
+import React from 'react'
 import { RouterContext } from 'react-router'
 
 import { global } from '../global'
 
-import ApolloClient, { addTypename, createNetworkInterface } from 'apollo-client';
-import { ApolloProvider } from 'react-apollo';
+import ApolloClient, { addTypename, createNetworkInterface } from 'apollo-client'
+import { ApolloProvider } from 'react-apollo'
 
 function createApolloClient(options) {
   return new ApolloClient(Object.assign({}, {
     queryTransformer: addTypename,
     dataIdFromObject: (result) => {
       if (result.id && result.__typename) { // eslint-disable-line no-underscore-dangle
-        return result.__typename + result.id; // eslint-disable-line no-underscore-dangle
+        return result.__typename + result.id // eslint-disable-line no-underscore-dangle
       }
-      return null;
+      return null
     },
     // shouldBatch: true,
   }, options))
@@ -39,7 +39,7 @@ function makeProvider(client, renderProps) {
     <ApolloProvider client={client}>
       <RouterContext {...renderProps} />
     </ApolloProvider>
-  );
+  )
 }
 
 export default { build, makeProvider }

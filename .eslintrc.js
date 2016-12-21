@@ -26,6 +26,14 @@ module.exports = {
     ]
   },
   "parserOptions": {
-    "sourceType": "module"
-  }
+    "sourceType": "module",
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+     "jsx": true
+    }
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
 };
