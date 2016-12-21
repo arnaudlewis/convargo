@@ -4,12 +4,12 @@ import R from 'ramda'
 
 const base = {
   domain: 'http://convargo.dev',
-  apiEndpoint: 'http://api.convargo.dev',
+  apiEndpoint: 'http://convargo.dev/api',
 }
 
 const prod = {
   domain: 'https://alws-convargo.herokuapp.com',
-  apiEndpoint: 'https://api.alws-convargo.herokuapp.com',
+  apiEndpoint: 'https://alws-convargo.herokuapp.com/api',
 }
 
 function globalConfiguration() {

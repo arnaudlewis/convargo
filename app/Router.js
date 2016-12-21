@@ -7,7 +7,8 @@ const App = {
 }
 
 const Api = {
-
+  endpoint: '/api',
+  graphiQL: '/graphiql',
 }
 
 export default { App, Api }

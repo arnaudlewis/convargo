@@ -1,8 +1,12 @@
 'use strict'
 
+import bodyParser from 'body-parser'
+import { graphqlExpress, graphiqlExpress } from 'graphql-server-express'
+
 import Router from '../Router'
 import Website from '../controllers/Website'
 import global from '../global'
+import gqlSchema from '../data/gqlSchema'
 
 const Method = {
   POST: 'post',
@@ -43,6 +47,9 @@ function errorHandler(app) {
 
 export default function (app) {
   const route = buildRoute.bind(null, app) //give app param for you for route declaration
+  //specific middleware to create graphQL Server
+  app.use(Router.Api.endpoint, bodyParser.json(), graphqlExpress({ schema: gqlSchema }));
+  app.use(Router.Api.graphiQL, graphiqlExpress({endpointURL: Router.Api.endpoint }));
 
   //Render client app
   route(Method.GET, Router.App.all, Website.index)
