@@ -1,0 +1,24 @@
+block seo
+
+doctype html(lang='en')
+
+head
+  title
+    != metaTitle ? metaTitle : "Convargo"
+  if metaDescription
+    meta(name='description', content=metaDescription)
+  if canonicalURL
+    link(rel='canonical', href=canonicalURL)
+
+  meta(name="viewport", content="width=device-width, initial-scale=1")
+
+  link(rel="stylesheet", type="text/css", href="/stylesheets/compiled/styles.css")
+  link(href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900", rel="stylesheet", type="text/css")
+
+  script.
+    window.Router = !{JSON.stringify(Router)}
+    window.Global = !{JSON.stringify(global)}
+
+body
+    block body
+    script(src="/javascripts/compiled/front.js")
