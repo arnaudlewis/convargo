@@ -8,7 +8,7 @@ import { global } from '../global'
 import ApolloClient, { addTypename, createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 
-function createApolloClient(options) {
+function createClient(options) {
   return new ApolloClient(Object.assign({}, {
     queryTransformer: addTypename,
     dataIdFromObject: (result) => {
@@ -22,7 +22,7 @@ function createApolloClient(options) {
 }
 
 function build(headers) {
-  return createApolloClient({
+  return createClient({
     ssrMode: true,
     networkInterface: createNetworkInterface({
       uri: global.apiEndpoint,
@@ -42,4 +42,4 @@ function makeProvider(client, renderProps) {
   )
 }
 
-export default { build, makeProvider }
+export default { build, makeProvider, createClient }

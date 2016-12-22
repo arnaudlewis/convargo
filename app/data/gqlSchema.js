@@ -1,6 +1,6 @@
-import { makeExecutableSchema } from 'graphql-tools';
+import { makeExecutableSchema } from 'graphql-tools'
 
-import resolvers from './resolvers';
+import resolvers from './resolvers'
 
 const schema = `
 type Author {
@@ -28,9 +28,9 @@ type Mutation {
 type Subscription {
   postUpvoted: Post
 }
-`;
+`
 
 export default makeExecutableSchema({
   typeDefs: schema,
   resolvers,
-});
+})

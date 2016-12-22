@@ -4,7 +4,7 @@ import { match } from 'react-router'
 import React from 'react'
 import ReactDOM from 'react-dom/server'
 import { renderToStringWithData } from 'react-apollo'
-import 'isomorphic-fetch';
+import 'isomorphic-fetch'
 
 import {NotFound, InternalServerError} from '../utils/Results'
 import routes from '../conf/client.routes.js'
@@ -22,10 +22,12 @@ function index(req, res, next) {
       const provider = Apollo.makeProvider(client, renderProps)
       renderToStringWithData(provider)
       .then(content => {
-        //const data = client.store.getState().apollo.data
-        //const html = (<Html content={content} state={{ apollo: { data } }}/>)
+        const data = client.store.getState().apollo.data
         const dom = <div id="content" dangerouslySetInnerHTML={{ __html: content }} />
-        res.render('index', {html: ReactDOM.renderToStaticMarkup(dom)})
+        res.render('index', {
+          html: ReactDOM.renderToStaticMarkup(dom),
+          apolloState: { apollo: { data } }
+        })
       })
       .catch(e => {
         next(InternalServerError(e))

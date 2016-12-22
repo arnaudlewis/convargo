@@ -47,9 +47,10 @@ function errorHandler(app) {
 
 export default function (app) {
   const route = buildRoute.bind(null, app) //give app param for you for route declaration
-  //specific middleware to create graphQL Server
-  app.use(Router.Api.endpoint, bodyParser.json(), graphqlExpress({ schema: gqlSchema }));
-  app.use(Router.Api.graphiQL, graphiqlExpress({endpointURL: Router.Api.endpoint }));
+  //middleware to create graphQL Server
+  app.use(Router.Api.endpoint, bodyParser.json(), graphqlExpress({ schema: gqlSchema }))
+  //middleware to add graphiQL interface
+  app.use(Router.Api.graphiQL, graphiqlExpress({endpointURL: Router.Api.endpoint }))
 
   //Render client app
   route(Method.GET, Router.App.all, Website.index)
