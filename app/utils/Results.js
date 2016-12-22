@@ -1,5 +1,3 @@
-
-
 function result(statusCode, message) {
   return { statusCode, message };
 }

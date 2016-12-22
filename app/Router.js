@@ -2,7 +2,7 @@
 
 const App = {
   index: '/',
-  newItem: '/new',
+  newWebsite: '/new',
   all: '*',
 }
 

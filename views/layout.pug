@@ -18,8 +18,8 @@ head
   script.
     window.Router = !{JSON.stringify(Router)}
     window.Global = !{JSON.stringify(global)}
-    window.__APOLLO_STATE__ = !{JSON.stringify(apolloState)}
+    //prevent invalid script if apolloStateEmpty
+    window.__APOLLO_STATE__ = !{apolloState ? JSON.stringify(apolloState) : 'null'}
 
 body
     block body
-    script(src="/javascripts/compiled/front.js")
