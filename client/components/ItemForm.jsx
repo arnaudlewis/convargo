@@ -1,14 +1,12 @@
-'use strict'
-
-import React from 'react'
+import React from 'react';
 
 export default class Home extends React.Component {
 
   handleClick() {
-     window.alert('hello')
+    window.alert('hello');
   }
 
   render() {
-    return <div onClick={this.handleClick}>Item form</div>
+    return <div onClick={this.handleClick}>Item form</div>;
   }
 }
