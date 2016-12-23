@@ -20,7 +20,7 @@ export default class Home extends React.Component {
     if(this.props.data.length === 0) {
       return <div className="empty">Empty</div>
     } else {
-      return this.props.data.websites.sort((a, b) => a.votes < b.votes).map((w, index) => {
+      return (this.props.data.websites || []).sort((a, b) => b.votes - a.votes).map((w, index) => {
         return <Website key={index} {...w} />;
       })
     }
@@ -30,7 +30,9 @@ export default class Home extends React.Component {
     return (
       <div className="home">
         <h1>Hacker News Feed</h1>
-        <Link to={Router.App.newWebsite}><button className="button--add">Add Item</button></Link>
+        <div className="align-right">
+          <Link to={Router.App.newWebsite}><button className="button--add">Add Item</button></Link>
+        </div>
         {this.renderList()}
       </div>
     );

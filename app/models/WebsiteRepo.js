@@ -38,7 +38,7 @@ export default {
     return new Promise((resolve, reject) => {
       const query = { _id: ObjectId(websiteId) };
       const modifier = { $inc: { votes: incr } };
-      db.products.update(query, modifier, err => {
+      collection.update(query, modifier, err => {
         if(err) reject(err.message)
         this.find(websiteId).then(w => resolve(w))
       })

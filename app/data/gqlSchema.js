@@ -27,6 +27,7 @@ type Mutation {
   ): Website
 
   createComment (
+    websiteId: String!
     comment: String!
   ): Comment
 

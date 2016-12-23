@@ -1,7 +1,8 @@
 import isUrl from 'is-url';
+import request from 'request';
 
-import Website from '../models/Website';
-import Comment from '../models/Comment';
+import {Website} from '../models/Website';
+import {Comment} from '../models/Comment';
 import WebsiteRepo from '../models/WebsiteRepo';
 import CommentRepo from '../models/CommentRepo';
 
@@ -22,46 +23,46 @@ function getWebsiteTitle(url) {
   })
 }
 
-function createWebsite(websiteURL) {
+function createWebsite(url) {
   return getWebsiteTitle(url)
-  .then(title => Website(null, url, title))
+  .then(title => new Website(null, url, title))
   .then(website => WebsiteRepo.insert(website))
   .catch(e => {
-    console.error(`Fail to create website from ${websiteURL}`)
-    return null
+    console.error(e)
+    throw new Error(`Fail to create website - ${e}`)
   });
 }
 
 function getAllWebsites() {
   return WebsiteRepo.getAll()
   .catch(e => {
-    console.error(`Fail to fetch websites`)
-    return []
+    console.error(e)
+    throw new Error(`Fail to fetch websites`)
   });
 }
 
 function voteWebsite(websiteId, incr) {
   return WebsiteRepo.updateVotes(websiteId, incr)
   .catch(e => {
-    console.error(`Fail to upvote website ${websiteId}`)
-    return null;
+    console.error(e)
+    throw new Error(`Fail to upvote website ${websiteId}`)
   });
 }
 
 function createComment(websiteId, commentText) {
-  const comment = Comment(null, commentText, websiteId);
+  const comment = new Comment(null, commentText, websiteId);
   return CommentRepo.insert(comment)
   .catch(e => {
-    console.error(`Fail to create website from ${websiteURL}`)
-    return null
+    console.error(e)
+    throw new Error(`Fail to create website from ${websiteURL}`)
   });
 }
 
 function getAllComments(websiteId) {
   return CommentRepo.getAllByWebsiteId(websiteId)
   .catch(e => {
-    console.error(`Fail to fetch comments of website ${websiteId}`)
-    return []
+    console.error(e)
+    throw new Error(`Fail to fetch comments of website ${websiteId}`)
   })
 }
 

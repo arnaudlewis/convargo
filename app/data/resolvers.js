@@ -7,16 +7,16 @@ const resolveFunctions = {
     },
   },
   Mutation: {
-    createWebsite(websiteURL) {
-      return Api.createWebsite(websiteURL);
+    createWebsite(_, {url}) {
+      return Api.createWebsite(url);
     },
 
-    createComment(wId, text) {
-      return Api.createComment(wId, text);
+    createComment(_, {websiteId, comment}) {
+      return Api.createComment(websiteId, comment);
     },
 
-    voteWebsite(wId, incr) {
-      return Api.voteWebsite(wId, incr);
+    voteWebsite(_, {websiteId, incr}) {
+      return Api.voteWebsite(websiteId, incr);
     },
   },
   Website: {

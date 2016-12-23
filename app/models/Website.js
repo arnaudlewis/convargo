@@ -1,6 +1,6 @@
 'use strict';
 
-export let Website = class {
+export const Website = class {
 
   constructor (id, url, title, votes) {
     this._id = id

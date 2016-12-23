@@ -1,8 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import Router from '../../app/Router';
 
+const createWebsiteMutation = gql`
+  mutation createWebsite($url: String!) {
+    createWebsite(url: $url) {
+      url
+    }
+  }
+`;
+
+@graphql(createWebsiteMutation, {name: 'createWebsiteMutation'})
 export default class Home extends React.Component {
 
   constructor() {
@@ -14,13 +25,24 @@ export default class Home extends React.Component {
     event.preventDefault();
 
     const url = this.refs.input.value;
-    console.log(url)
+    this.props.createWebsiteMutation({
+      variables: {
+        url: url,
+      }
+    })
+    .then(({ data }) => {
+      this.props.router.push(Router.App.index);
+    }).catch(e => {
+      window.alert(e)
+    });
   }
 
   render() {
     return (
       <div className="website-form">
-        <Link to={Router.App.index}><button>Go Back to List</button></Link>
+        <div className="align-right">
+          <Link to={Router.App.index}><button>Go Back to List</button></Link>
+        </div>
 
         <h1>Share your URL</h1>
         <form onSubmit={this._handleSubmit}>

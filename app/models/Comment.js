@@ -1,6 +1,6 @@
 'use strict';
 
-export let Comment = class {
+export const Comment = class {
 
   constructor (id, comment, websiteId) {
     this._id = id

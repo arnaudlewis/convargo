@@ -1,13 +1,20 @@
 import React from 'react';
 import { render } from 'react-dom';
-import ApolloClient from 'apollo-client';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import 'isomorphic-fetch';
 
 import ClientRouter from './components/ClientRouter.jsx';
+import { global } from '../app/global';
 
 const client = new ApolloClient({
   initialState: window.__APOLLO_STATE__,
+  networkInterface: createNetworkInterface({
+    uri: global.apiEndpoint,
+    opts: {
+      credentials: 'same-origin',
+    },
+  })
 });
 
 window.onload = () => {
