@@ -4,7 +4,7 @@ import R from 'ramda';
 export const Kind = {
   UP: 'up',
   DOWN: 'down',
-}
+};
 
 class Vote extends React.Component {
 
@@ -19,8 +19,8 @@ class Vote extends React.Component {
 
   render() {
     const content = this.props.kind === Kind.UP
-      ? <i className="fa fa-thumbs-up" aria-hidden="true"></i>
-      : <i className="fa fa-thumbs-down" aria-hidden="true"></i>;
+      ? <i className="fa fa-thumbs-up" aria-hidden="true" />
+      : <i className="fa fa-thumbs-down" aria-hidden="true" />;
     return (
       <span className="vote" onClick={this._handleClick}>{content}</span>
     );
@@ -30,6 +30,6 @@ class Vote extends React.Component {
 Vote.propTypes = {
   kind: React.PropTypes.oneOf(R.values(Kind)),
   onVote: React.PropTypes.func.isRequired,
-}
+};
 
 export default Vote;

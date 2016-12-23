@@ -1,4 +1,4 @@
-import Api from '../controllers/Api'
+import Api from '../controllers/Api';
 
 const resolveFunctions = {
   Query: {
@@ -7,20 +7,20 @@ const resolveFunctions = {
     },
   },
   Mutation: {
-    createWebsite(_, {url}) {
+    createWebsite(_, { url }) {
       return Api.createWebsite(url);
     },
 
-    createComment(_, {websiteId, comment}) {
+    createComment(_, { websiteId, comment }) {
       return Api.createComment(websiteId, comment);
     },
 
-    voteWebsite(_, {websiteId, incr}) {
+    voteWebsite(_, { websiteId, incr }) {
       return Api.voteWebsite(websiteId, incr);
     },
   },
   Website: {
-    comments({_id}) {
+    comments({ _id }) {
       return Api.getAllComments(_id);
     },
   },

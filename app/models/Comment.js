@@ -1,18 +1,16 @@
-'use strict';
-
 export const Comment = class {
 
-  constructor (id, comment, websiteId) {
-    this._id = id
-    this.comment = comment
-    this.websiteId = websiteId
+  constructor(id, comment, websiteId) {
+    this._id = id;
+    this.comment = comment;
+    this.websiteId = websiteId;
   }
 
-  toJson () {
+  toJson() {
     return {
-      "_id": this._id,
-      "comment": this.comment,
-      "websiteId": this.websiteId,
-    }
+      _id: this._id,
+      comment: this.comment,
+      websiteId: this.websiteId,
+    };
   }
-}
+};

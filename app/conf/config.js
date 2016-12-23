@@ -1,5 +1,3 @@
-
-
 /**
  * Module dependencies.
  */
@@ -13,7 +11,7 @@ import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import routes from './server.routes.js';
 
-export default (function () {
+export default (function init() {
   const app = express();
   // all environments
   app.set('port', process.env.PORT || 3000);

@@ -9,9 +9,7 @@ class Comment extends React.Component {
 }
 
 Comment.propTypes = {
-  _id: React.PropTypes.string,
   comment: React.PropTypes.string.isRequired,
-  websiteId: React.PropTypes.string,
-}
+};
 
 export default Comment;

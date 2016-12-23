@@ -22,11 +22,13 @@ function buildRoute(app, method, url, action) {
 
     case Method.GET :
       return app.route(url).get(action);
+
+    default:
   }
 }
 
 function errorHandler(app) {
-  app.use((err, req, res, next) => {
+  app.use((err, req, res) => {
     switch (err.statusCode) {
       case 404:
         console.error(err.message);

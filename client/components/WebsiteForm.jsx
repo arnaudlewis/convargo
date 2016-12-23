@@ -13,7 +13,7 @@ const createWebsiteMutation = gql`
   }
 `;
 
-@graphql(createWebsiteMutation, {name: 'createWebsiteMutation'})
+@graphql(createWebsiteMutation, { name: 'createWebsiteMutation' })
 export default class Home extends React.Component {
 
   constructor() {
@@ -27,13 +27,13 @@ export default class Home extends React.Component {
     const url = this.refs.input.value;
     this.props.createWebsiteMutation({
       variables: {
-        url: url,
-      }
+        url,
+      },
     })
     .then(({ data }) => {
       this.props.router.push(Router.App.index);
-    }).catch(e => {
-      window.alert(e)
+    }).catch((e) => {
+      window.alert(e);
     });
   }
 
@@ -48,7 +48,7 @@ export default class Home extends React.Component {
         <form onSubmit={this._handleSubmit}>
           <input type="text" ref="input" placeholder="web url" required />
           <button type="submit">Submit</button>
-      </form>
+        </form>
       </div>
     );
   }

@@ -9,13 +9,13 @@ import Vote, { Kind } from './Vote.jsx';
 class Website extends React.Component {
 
   constructor(props) {
-    super()
-    this._onVote = ::this._onVote
-    this._onComment = ::this._onComment
+    super();
+    this._onVote = ::this._onVote;
+    this._onComment = ::this._onComment;
   }
 
   _onComment(commentText) {
-    return this.props.onComment(commentText)
+    return this.props.onComment(commentText);
   }
 
   _onVote(incr) {
@@ -33,9 +33,7 @@ class Website extends React.Component {
         </div>
         <div className="comments">
           {
-            this.props.comments.map((c, index) => {
-              return <Comment key={index} {...c} />;
-            })
+            this.props.comments.map((c, index) => <Comment key={index} {...c} />)
           }
         </div>
         <CommentForm onSubmit={this._onComment} />

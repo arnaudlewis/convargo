@@ -1,3 +1,5 @@
+/* global window,document*/
+
 import React from 'react';
 import { render } from 'react-dom';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
@@ -14,7 +16,7 @@ const client = new ApolloClient({
     opts: {
       credentials: 'same-origin',
     },
-  })
+  }),
 });
 
 window.onload = () => {

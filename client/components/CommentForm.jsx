@@ -19,7 +19,7 @@ class CommentForm extends React.Component {
   render() {
     return (
       <form onSubmit={this._handleSubmit}>
-        <textarea ref="commentArea" required></textarea>
+        <textarea ref="commentArea" required />
         <button type="submit">Post</button>
       </form>
     );
@@ -28,6 +28,6 @@ class CommentForm extends React.Component {
 
 CommentForm.propTypes = {
   onSubmit: React.PropTypes.func.isRequired,
-}
+};
 
 export default CommentForm;

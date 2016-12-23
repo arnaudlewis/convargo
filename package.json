@@ -10,9 +10,7 @@
     "build-js": "webpack --config ./webpack.config.js",
     "watch-js": "webpack --watch | nodemon ./dist/app.bundle.js",
     "build-style": "gulp build-style",
-    "watch-style": "gulp watch-style",
-    "lint": "eslint --fix app/**/*.js; eslint --fix client/**/*.js client/**/*.jsx",
-    "test": "npm run lint"
+    "watch-style": "gulp watch-style"
   },
   "dependencies": {
     "apollo-client": "^0.5.23",

@@ -1,7 +1,5 @@
-import mongojs from 'mongojs'
+import mongojs from 'mongojs';
 
-const db = mongojs('convargo')
+const db = mongojs('convargo');
 
-export let getCollection = (collectionName) => {
-  return db.collection(collectionName)
-}
+export const getCollection = collectionName => db.collection(collectionName);
