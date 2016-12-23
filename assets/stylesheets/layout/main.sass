@@ -7,6 +7,54 @@ body
   font-family: 'Lato', 'Arial'
   letter-spacing: 0.25
 
+  *
+    outline: none
+
   nav
     height: 70px
-    background-color: $carnation
+    background-color: white
+    box-shadow: 1px 0px 14px 0px rgba(0, 0, 0, 0.2)
+    display: flex
+    .nav-container
+      display: flex
+      align-items: center
+      padding: 0 20px
+      box-sizing: border-box
+      font-size: 24px
+      max-width: 1200px
+      font-weight: 900
+      width: 100%
+      margin: auto
+
+    img
+      width: 70px
+      height: 70px
+
+  .main
+    max-width: 1200px
+    margin: auto
+    #content
+      padding: 30px
+      box-sizing: border-box
+
+  button
+    border: none
+    padding: 10px 20px
+    border-radius: 3px
+    cursor: pointer
+    background-color: $emerald
+    color: white
+
+    &:hover
+      background-color: darken($emerald, 5%)
+
+  textarea
+    border: 1px solid $athensgray
+    resize: none
+    min-width: 400px
+    min-height: 100px
+    display: block
+    margin: 20px 0
+
+  a
+    text-decoration: none

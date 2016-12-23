@@ -13,8 +13,8 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <Link to={Router.App.newWebsite}>Add Item</Link>
+      <div className="home">
+        <Link to={Router.App.newWebsite}><button className="button--add">Add Item</button></Link>
         {
           this.props.data.websites.sort((a, b) => a.votes < b.votes).map((w, index) => {
             return <Website key={index} {...w} />;

@@ -19,8 +19,8 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <Link to={Router.App.index}>Go Back to List</Link>
+      <div className="website-form">
+        <Link to={Router.App.index}><button>Go Back to List</button></Link>
         <form onSubmit={this._handleSubmit}>
           <input type="text" ref="input" placeholder="web url" />
           <button type="submit">Submit</button>

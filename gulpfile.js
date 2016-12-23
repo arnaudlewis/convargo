@@ -14,7 +14,6 @@ const Path = {
 
 gulp.task('build-style', function () {
   var options = {
-    includePaths: ['node_modules/foundation-sites/scss'],
     outputStyle: 'compressed'
   };
   gulp.src(Path.entryPoint)
