@@ -5,7 +5,7 @@ export let Website = class {
   constructor (id, url, title, votes) {
     this._id = id
     this.url = url
-    this.title = title
+    this.title = title || ''
     this.votes = votes || 0
   }
 

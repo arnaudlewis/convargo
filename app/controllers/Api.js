@@ -12,7 +12,9 @@ function getWebsiteTitle(url) {
     }
     request(url, (error, response, body) => {
       if (!error && response.statusCode === 200) {
-        resolve('New title');
+        const titleRegexp = new RegExp('<title[^>]*>(.*?)</title>');
+        const matches = body.match(titleRegexp);
+        resolve(matches ? matches[1] : null);
       } else {
         reject('Cannot retrieved content')
       }
