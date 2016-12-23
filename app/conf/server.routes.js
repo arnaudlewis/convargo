@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 
 import Router from '../Router';
-import Website from '../controllers/Website';
+import App from '../controllers/App';
 import global from '../global';
 import gqlSchema from '../data/gqlSchema';
 
@@ -53,7 +53,7 @@ export default function (app) {
   app.use(Router.Api.graphiQL, graphiqlExpress({ endpointURL: Router.Api.endpoint }));
 
   // Render client app
-  route(Method.GET, Router.App.all, Website.index);
+  route(Method.GET, Router.App.all, App.index);
 
   errorHandler(app);
   // Expose router for templates

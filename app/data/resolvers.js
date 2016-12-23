@@ -1,33 +1,27 @@
-import { pubsub } from './subscriptions';
-
-import WebsiteRepo from '../models/WebsiteRepo'
-import CommentRepo from '../models/CommentRepo'
+import Api from '../controllers/Api'
 
 const resolveFunctions = {
   Query: {
     websites() {
-      return WebsiteRepo.getAll();
+      return Api.getAllWebsites();
     },
   },
   Mutation: {
-    upvoteWebsite(_, { wId }) {
-      const website = websites.find(w => w.id === wId);
-      if (!website) {
-        throw new Error(`Couldn't find post with id ${postId}`);
-      }
-      website.votes += 1;
-      pubsub.publish('websiteUpvoted', website);
-      return website;
+    createWebsite(websiteURL) {
+      return Api.createWebsite(websiteURL);
     },
-  },
-  Subscription: {
-    websiteUpvoted(post) {
-      return post;
+
+    createComment(wId, text) {
+      return Api.createComment(wId, text);
+    },
+
+    voteWebsite(wId, incr) {
+      return Api.voteWebsite(wId, incr);
     },
   },
   Website: {
     comments({_id}) {
-      return CommentRepo.getAllByWebsiteId(_id)
+      return Api.getAllComments(_id);
     },
   },
 };

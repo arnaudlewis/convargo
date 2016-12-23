@@ -22,13 +22,18 @@ type Query {
 }
 
 type Mutation {
-  upvoteWebsite (
-    websiteId: String!
+  createWebsite (
+    url: String!
   ): Website
-}
 
-type Subscription {
-  websiteUpvoted: Website
+  createComment (
+    comment: String!
+  ): Comment
+
+  voteWebsite (
+    websiteId: String!
+    incr: Int!
+  ): Website
 }
 `;
 

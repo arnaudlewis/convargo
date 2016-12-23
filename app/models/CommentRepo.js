@@ -18,7 +18,7 @@ export default {
     return new Promise((resolve, reject) => {
       collection.insert(comment.toJson(), (err) => {
         if(err) reject(err.message)
-        resolve()
+        resolve(comment)
       })
     })
   },

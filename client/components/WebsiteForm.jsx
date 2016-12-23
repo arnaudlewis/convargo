@@ -22,7 +22,7 @@ export default class Home extends React.Component {
       <div className="website-form">
         <Link to={Router.App.index}><button>Go Back to List</button></Link>
 
-        <h1>ADD A NEW WEBSITE</h1>
+        <h1>Share your URL</h1>
         <form onSubmit={this._handleSubmit}>
           <input type="text" ref="input" placeholder="web url" required />
           <button type="submit">Submit</button>

@@ -1,5 +1,5 @@
 import { getCollection } from '../data/db'
-import mongojs from 'mongojs'
+import { ObjectId } from 'mongojs'
 import { Website } from './Website'
 
 const collection = getCollection('websites')
@@ -15,11 +15,32 @@ const buildWebsite = (mongoWebsite) => {
 
 export default {
 
+  find(id) {
+    return new Promise((resolve, reject) => {
+      const query = {_id: ObjectId(id)}
+      collection.findOne(query, (err, website) => {
+        if(err) reject(err)
+        resolve(buildWebsite(website))
+      })
+    })
+  },
+
   insert(website) {
     return new Promise((resolve, reject) => {
-      collection.insert(website.toJson(), (err) => {
+      collection.insert(website.toJson(), err => {
         if(err) reject(err.message)
-        resolve()
+        resolve(website)
+      })
+    })
+  },
+
+  updateVotes(websiteId, incr) {
+    return new Promise((resolve, reject) => {
+      const query = { _id: ObjectId(websiteId) };
+      const modifier = { $inc: { votes: incr } };
+      db.products.update(query, modifier, err => {
+        if(err) reject(err.message)
+        this.find(websiteId).then(w => resolve(w))
       })
     })
   },
