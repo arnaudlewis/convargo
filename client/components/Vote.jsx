@@ -18,9 +18,11 @@ class Vote extends React.Component {
   }
 
   render() {
-    const label = this.props.kind === Kind.UP ? 'UpVote' : 'DownVote';
+    const content = this.props.kind === Kind.UP
+      ? <i className="fa fa-thumbs-up" aria-hidden="true"></i>
+      : <i className="fa fa-thumbs-down" aria-hidden="true"></i>;
     return (
-      <span onClick={this._handleClick}>{label}</span>
+      <span className="vote" onClick={this._handleClick}>{content}</span>
     );
   }
 }

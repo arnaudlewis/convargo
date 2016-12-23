@@ -16,18 +16,20 @@ class Website extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <span>{this.props.title}</span>
-          <span>{this.props.url}</span>
+      <div className="website">
+        <div className="infos">
+          <p className="name">{`${this.props.votes} vote${this.props.votes === 1 ? '' : 's'} - ${this.props.title}`}</p>
+          <p className="url">{this.props.url}</p>
           <Vote websiteId={this.props._id} kind={Kind.UP} onVote={this.onVote} />
           <Vote websiteId={this.props._id} kind={Kind.DOWN} onVote={this.onVote} />
         </div>
-        {
-          this.props.comments.map((c, index) => {
-            return <Comment key={index} {...c} />;
-          })
-        }
+        <div className="comments">
+          {
+            this.props.comments.map((c, index) => {
+              return <Comment key={index} {...c} />;
+            })
+          }
+        </div>
         <CommentForm onSubmit={this.onPostComment} />
       </div>
     );
