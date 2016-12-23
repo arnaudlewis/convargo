@@ -17,7 +17,7 @@ class CommentForm extends React.Component {
   render() {
     return (
       <form onSubmit={this._handleSubmit}>
-        <textarea ref="commentArea"></textarea>
+        <textarea ref="commentArea" required></textarea>
         <button type="submit">Post</button>
       </form>
     );
