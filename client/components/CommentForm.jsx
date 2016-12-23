@@ -10,8 +10,10 @@ class CommentForm extends React.Component {
   _handleSubmit(event) {
     event.preventDefault();
 
-    const commentText = this.refs.commentArea.value;
+    const commentArea = this.refs.commentArea;
+    const commentText = commentArea.value;
     this.props.onSubmit(commentText)
+    .then(() => commentArea.value = '');
   }
 
   render() {
