@@ -28,7 +28,7 @@ function buildRoute(app, method, url, action) {
 }
 
 function errorHandler(app) {
-  app.use((err, req, res) => {
+  app.use((err, req, res, next) => {
     switch (err.statusCode) {
       case 404:
         console.error(err.message);
@@ -50,6 +50,7 @@ function errorHandler(app) {
 export default function (app) {
   const route = buildRoute.bind(null, app); // give app param for you for route declaration
   // middleware to create graphQL Server
+
   app.use(Router.Api.endpoint, bodyParser.json(), graphqlExpress({ schema: gqlSchema }));
   // middleware to add graphiQL interface
   app.use(Router.Api.graphiQL, graphiqlExpress({ endpointURL: Router.Api.endpoint }));
